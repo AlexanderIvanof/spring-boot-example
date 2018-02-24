@@ -1,0 +1,11 @@
+# Build tool specific
+**/target
+**/.gradle
+**/build
+
+# IDE Specific
+**/.idea
+**/*.iml
+**/.settings
+**/.classpath
+**/.project

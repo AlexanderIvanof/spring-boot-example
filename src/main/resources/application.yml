@@ -1,0 +1,11 @@
+spring:
+  application.name: home-spring-boot
+
+server:
+  port: 9980
+
+logging:
+  level:
+    root: INFO
+  pattern:
+    console: "%d{DEFAULT} [%thread] %-5level %logger{36} - %msg%n"

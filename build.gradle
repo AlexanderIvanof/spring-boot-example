@@ -1,0 +1,47 @@
+version "0.0.1-SNAPSHOT"
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.10.RELEASE"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE"
+    }
+}
+
+ext { springBootVersion = '1.5.7.RELEASE' }
+
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    compile 'org.projectlombok:lombok'
+    compile('org.springframework.boot:spring-boot-starter-web') {
+        exclude group: 'org.springframework.boot', module:'spring-boot-starter-logging'
+    }
+    compile project(':home-aop-spring-boot-starter')
+    testCompile 'junit:junit'
+}
+
+allprojects {
+    group = "com.alex.home.boot"
+
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        compile 'org.springframework.boot:spring-boot-starter-log4j2'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+        }
+    }
+}
