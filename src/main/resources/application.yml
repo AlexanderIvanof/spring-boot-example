@@ -1,5 +1,7 @@
 spring:
   application.name: home-spring-boot
+  profiles:
+    active: PROD
 
 server:
   port: 9980
@@ -9,3 +11,8 @@ logging:
     root: INFO
   pattern:
     console: "%d{DEFAULT} [%thread] %-5level %logger{36} - %msg%n"
+
+inspect: true
+
+common:
+  destination: "registered service..."

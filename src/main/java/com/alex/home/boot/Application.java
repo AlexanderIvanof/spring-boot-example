@@ -1,12 +1,13 @@
 package com.alex.home.boot;
 
-import java.util.Arrays;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+
+import java.util.Arrays;
 
 @SpringBootApplication
 public class Application {
@@ -16,6 +17,7 @@ public class Application {
     }
 
     @Bean
+    @ConditionalOnProperty(name = "inspect", havingValue = "true")
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
 

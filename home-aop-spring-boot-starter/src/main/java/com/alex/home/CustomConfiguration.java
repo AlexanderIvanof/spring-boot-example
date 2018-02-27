@@ -1,5 +1,7 @@
 package com.alex.home;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,10 +12,12 @@ import org.springframework.context.annotation.Configuration;
  * @author Oleksandr Ivanov
  */
 @Configuration
+@EnableConfigurationProperties(CustomProperties.class)
 public class CustomConfiguration {
 
     @Bean
-    public CustomListener customListener() {
-        return new CustomListener();
+    @ConditionalOnProperty("common.destination")
+    public CustomListener customListener(CustomProperties initialProperties) {
+        return new CustomListener(initialProperties);
     }
 }

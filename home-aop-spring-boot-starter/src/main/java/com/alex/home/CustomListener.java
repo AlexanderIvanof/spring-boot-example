@@ -1,5 +1,7 @@
 package com.alex.home;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 
@@ -9,10 +11,19 @@ import org.springframework.context.event.ContextRefreshedEvent;
  *
  * @author Oleksandr Ivanov
  */
+@Slf4j
 public class CustomListener implements ApplicationListener<ContextRefreshedEvent> {
+
+    private final CustomProperties initialProperties;
+
+    @Autowired
+    public CustomListener(CustomProperties initialProperties) {
+        this.initialProperties = initialProperties;
+    }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        System.out.println("Context refreshed ->" + event.getTimestamp());
+        log.info("Context refreshed -> {}", event.getTimestamp());
+        log.info("Got property from context: {}", initialProperties.getDestination());
     }
 }

@@ -1,1 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.alex.home.CustomConfiguration,com.alex.home.logger.AspectLoggingConfiguration
+
+org.springframework.context.ApplicationContextInitializer=com.alex.home.ProfileChecker
+
+org.springframework.boot.env.EnvironmentPostProcessor=com.alex.home.ProfileInitiator
