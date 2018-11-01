@@ -2,6 +2,6 @@ version '0.1-SNAPSHOT'
 
 task webjar(type: Jar, dependsOn: "jar") {
     from(fileTree("dist")) {
-        into "META-INF/resources"
+        into "META-INF/resources/${project.name}"
     }
 }

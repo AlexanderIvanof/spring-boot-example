@@ -9,3 +9,6 @@
 **/.settings
 **/.classpath
 **/.project
+# UI related
+**/node_modules
+**/*.log

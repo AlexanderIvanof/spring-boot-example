@@ -17,6 +17,10 @@ const cleanUpPlugin = new CleanWebpackPlugin(
 );
 
 module.exports = {
+    entry: "./src/index.js",
+    output: {
+        filename: "myapp.js"
+    },
     module: {
         rules: [
             {
